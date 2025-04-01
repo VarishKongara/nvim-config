@@ -1,5 +1,12 @@
-vim.wo.number = true -- Make line numbers default (default: false)
-vim.o.relativenumber = true -- Set relative numbered lines (default: false)
+--enable line numbers and use relative line numbers
+-- vim.wo.number = true -- Make line numbers default (default: false)
+-- vim.o.relativenumber = true -- Set relative numbered lines (default: false)
+--
+-- use both relative and absolute line numbers
+vim.opt.number = true
+vim.opt.number = true
+
+--set clipboard to use win32yank for default
 vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim. (default: '')
 vim.g.clipboard = {
   name = 'win32yank',
@@ -13,8 +20,7 @@ vim.g.clipboard = {
   },
   cache_enabled = 0,
 }
-vim.o.wrap = false -- Display lines as one long line (default: true)
-vim.o.linebreak = true -- Companion to wrap, don't split words (default: false)
+
 vim.o.mouse = 'a' -- Enable mouse mode (default: '')
 vim.o.autoindent = true -- Copy indent from current line when starting new one (default: true)
 vim.o.ignorecase = true -- Case-insensitive searching UNLESS \C or capital in search (default: false)
@@ -53,3 +59,9 @@ vim.opt.shortmess:append 'c' -- Don't give |ins-completion-menu| messages (defau
 vim.opt.iskeyword:append '-' -- Hyphenated words recognized by searches (default: does not include '-')
 vim.opt.formatoptions:remove { 'c', 'r', 'o' } -- Don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode. (default: 'croql')
 vim.opt.runtimepath:remove '/usr/share/vim/vimfiles' -- Separate Vim plugins from Neovim in case Vim still in use (default: includes this path if Vim is installed)
+
+--make lines wrap when too long
+vim.opt.textwidth = 0 -- Disable hard wrapping (no text width limit)
+vim.opt.wrap = true -- Enable soft wrapping at the edge of the window
+vim.opt.linebreak = true -- Ensure text wraps at word boundaries not char boundaries
+vim.o.wrapmargin = 5 -- Set wrap margin to 5 characters (optional)
