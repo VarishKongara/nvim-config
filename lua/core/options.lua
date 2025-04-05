@@ -1,10 +1,6 @@
---enable line numbers and use relative line numbers
--- vim.wo.number = true -- Make line numbers default (default: false)
--- vim.o.relativenumber = true -- Set relative numbered lines (default: false)
---
--- use both relative and absolute line numbers
-vim.opt.number = true
-vim.opt.number = true
+--[[ enable line numbers and use relative line numbers ]]
+vim.wo.number = true -- Make line numbers default (default: false)
+vim.o.relativenumber = true -- Set relative numbered lines (default: false)
 
 --set clipboard to use win32yank for default
 vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim. (default: '')
