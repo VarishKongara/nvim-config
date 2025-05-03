@@ -18,7 +18,8 @@ return {
         'shfmt', -- Shell formatter
         'checkmake', -- linter for Makefiles
         'ruff', -- Python linter and formatter
-        'clangd',
+        'clangd', -- c++
+        'gofmt', -- golang
       },
       automatic_installation = true,
     }
@@ -32,6 +33,7 @@ return {
       require('none-ls.formatting.ruff').with { extra_args = { '--extend-select', 'I' } },
       require 'none-ls.formatting.ruff_format',
       formatting.clang_format,
+      formatting.gofmt,
     }
 
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
