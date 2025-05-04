@@ -39,14 +39,15 @@ return {
     }
 
     -- set theme
-    vim.cmd 'colorscheme nightfox'
-    -- require('nightfox').set()
+    local theme = 'duskfox'
+    vim.cmd('colorscheme ' .. theme)
+
     -- Toggle Transparency
     local bg_transparent = false
     local toggle_transparency = function()
       bg_transparent = not bg_transparent
       vim.g.nightfox_transparent = bg_transparent
-      vim.cmd 'colorscheme nightfox'
+      vim.cmd('colorscheme ' .. theme)
     end
 
     vim.keymap.set('n', '<leader>bg', toggle_transparency, { noremap = true, silent = true })
