@@ -60,4 +60,4 @@ vim.opt.runtimepath:remove '/usr/share/vim/vimfiles' -- Separate Vim plugins fro
 vim.opt.textwidth = 0 -- Disable hard wrapping (no text width limit)
 vim.opt.wrap = true -- Enable soft wrapping at the edge of the window
 vim.opt.linebreak = true -- Ensure text wraps at word boundaries not char boundaries
-vim.o.wrapmargin = 5 -- Set wrap margin to 5 characters (optional)
+-- vim.o.wrapmargin = 5 -- Set wrap margin to 5 characters (optional)
