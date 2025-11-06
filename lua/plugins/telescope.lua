@@ -1,7 +1,8 @@
 return {
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
-  branch = '0.1.x',
+  -- branch = '0.1.x',
+  branch = 'master',
   dependencies = {
     'nvim-lua/plenary.nvim',
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -58,16 +59,17 @@ return {
       },
       pickers = {
         find_files = {
-          file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+          file_ignore_patterns = { 'node_modules', '%.git', '%.venv' },
           hidden = true,
         },
+        live_grep = {
+          file_ignore_patterns = { 'node_modules', '%.git', '%.venv' },
+          additional_args = function(_)
+            return { '--hidden' }
+          end,
+        },
       },
-      live_grep = {
-        file_ignore_patterns = { 'node_modules', '.git', '.venv' },
-        additional_args = function(_)
-          return { '--hidden' }
-        end,
-      },
+
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
