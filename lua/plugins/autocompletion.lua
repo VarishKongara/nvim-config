@@ -22,41 +22,7 @@ return {
   config = function()
     local blink = require 'blink.cmp'
 
-    local kind_icons = {
-      Text = '󰉿',
-      Method = 'm',
-      Function = '󰊕',
-      Constructor = '',
-      Field = '',
-      Variable = '󰆧',
-      Class = '󰌗',
-      Interface = '',
-      Module = '',
-      Property = '',
-      Unit = '',
-      Value = '󰎠',
-      Enum = '',
-      Keyword = '󰌋',
-      Snippet = '',
-      Color = '󰏘',
-      File = '󰈙',
-      Reference = '',
-      Folder = '󰉋',
-      EnumMember = '',
-      Constant = '󰇽',
-      Struct = '',
-      Event = '',
-      Operator = '󰆕',
-      TypeParameter = '󰊄',
-    }
-
     blink.setup {
-      snippets = {
-        expand = function(args)
-          local luasnip = require 'luasnip'
-          luasnip.lsp_expand(args.body)
-        end,
-      },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
