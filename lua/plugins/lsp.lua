@@ -72,6 +72,9 @@ return {
       vim.list_extend(ensure_installed, { 'stylua' })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      -- Add Non-Mason Servers
+      servers.gleam = {}
+
       -- LSP attach function
       local on_attach = function(client, bufnr)
         local map = function(keys, func, desc, mode)
