@@ -8,6 +8,7 @@ return {
     local null_ls = require 'null-ls'
     local formatting = null_ls.builtins.formatting -- to setup formatters
     local diagnostics = null_ls.builtins.diagnostics -- to setup linters
+    local helpers = require 'null-ls.helpers'
 
     -- Formatters & linters for mason to install
     require('mason-null-ls').setup {
@@ -24,6 +25,18 @@ return {
       automatic_installation = true,
     }
 
+    -- Custom formatters
+    local gleam_formatter = helpers.make_builtin {
+      name = 'gleam',
+      method = null_ls.methods.FORMATTING,
+      filetypes = { 'gleam' },
+      generator = helpers.formatter_factory {
+        command = 'gleam', -- make sure 'gleam' is in your PATH
+        args = { 'format', '-' }, -- read from stdin
+        to_stdin = true,
+      },
+    }
+
     local sources = {
       diagnostics.checkmake,
       formatting.prettier.with { filetypes = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'yaml', 'markdown' } },
@@ -36,6 +49,7 @@ return {
         filetypes = { 'c', 'cpp', 'h', '.hpp', 'hxx' },
       },
       formatting.gofmt,
+      gleam_formatter,
     }
 
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
