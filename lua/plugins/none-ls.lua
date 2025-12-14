@@ -19,7 +19,7 @@ return {
         'shfmt', -- Shell formatter
         'checkmake', -- linter for Makefiles
         'ruff', -- Python linter and formatter
-        'clang_format', -- c++
+        'clang-format', -- c++
         'gofmt', -- golang
       },
       automatic_installation = true,
@@ -32,6 +32,16 @@ return {
       filetypes = { 'gleam' },
       generator = helpers.formatter_factory {
         command = 'gleam', -- make sure 'gleam' is in your PATH
+        args = { 'format', '-' }, -- read from stdin
+        to_stdin = true,
+      },
+    }
+    local roc_formatter = helpers.make_builtin {
+      name = 'gleam',
+      method = null_ls.methods.FORMATTING,
+      filetypes = { 'roc' },
+      generator = helpers.formatter_factory {
+        command = 'roc', -- make sure 'gleam' is in your PATH
         args = { 'format', '-' }, -- read from stdin
         to_stdin = true,
       },
@@ -49,6 +59,7 @@ return {
         filetypes = { 'c', 'cpp', 'h', '.hpp', 'hxx' },
       },
       formatting.gofmt,
+      roc_formatter,
       gleam_formatter,
     }
 

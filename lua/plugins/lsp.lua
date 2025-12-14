@@ -74,6 +74,7 @@ return {
 
       -- Add Non-Mason Servers
       servers.gleam = {}
+      servers.roc_ls = {}
 
       -- LSP attach function
       local on_attach = function(client, bufnr)

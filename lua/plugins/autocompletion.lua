@@ -19,6 +19,7 @@ return {
       },
     },
   },
+  version = '*',
   config = function()
     local blink = require 'blink.cmp'
 
