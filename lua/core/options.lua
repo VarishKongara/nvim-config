@@ -2,7 +2,9 @@
 vim.wo.number = true -- Make line numbers default (default: false)
 vim.o.relativenumber = true -- Set relative numbered lines (default: false)
 
---set clipboard to use win32yank for default
+--set clipboard to use win32yank for windows
+--set clipboard to use xclip for x11
+--set clipboard to use wl-clipboard for wayland
 vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim. (default: '')
 vim.g.clipboard = {
   name = 'wl-clipboard',
@@ -61,3 +63,6 @@ vim.opt.textwidth = 0 -- Disable hard wrapping (no text width limit)
 vim.opt.wrap = true -- Enable soft wrapping at the edge of the window
 vim.opt.linebreak = true -- Ensure text wraps at word boundaries not char boundaries
 -- vim.o.wrapmargin = 5 -- Set wrap margin to 5 characters (optional)
+
+--stop empty buffer from showing ~
+vim.opt.fillchars = { eob = ' ' }
