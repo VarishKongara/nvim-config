@@ -5,14 +5,14 @@ vim.o.relativenumber = true -- Set relative numbered lines (default: false)
 --set clipboard to use win32yank for default
 vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim. (default: '')
 vim.g.clipboard = {
-  name = 'win32yank',
+  name = 'wl-clipboard',
   copy = {
-    ['+'] = 'win32yank -i --crlf',
-    ['*'] = 'win32yank -i --crlf',
+    ['+'] = 'wl-copy',
+    ['*'] = 'wl-copy',
   },
   paste = {
-    ['+'] = 'win32yank -o --lf',
-    ['*'] = 'win32yank -o --lf',
+    ['+'] = 'wl-paste --no-newline',
+    ['*'] = 'wl-paste --no-newline',
   },
   cache_enabled = 0,
 }
