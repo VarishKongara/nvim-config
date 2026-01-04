@@ -33,6 +33,7 @@ return { -- Highlight, edit, and navigate code
       'html',
       'gleam',
       'roc',
+      'odin',
     },
     -- Autoinstall languages that are not installed
     auto_install = true,

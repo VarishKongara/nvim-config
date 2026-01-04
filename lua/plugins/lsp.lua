@@ -64,6 +64,7 @@ return {
             },
           },
         },
+        ols = {},
       }
 
       -- Setup Mason

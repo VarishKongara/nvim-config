@@ -37,12 +37,22 @@ return {
       },
     }
     local roc_formatter = helpers.make_builtin {
-      name = 'gleam',
+      name = 'roc',
       method = null_ls.methods.FORMATTING,
       filetypes = { 'roc' },
       generator = helpers.formatter_factory {
-        command = 'roc', -- make sure 'gleam' is in your PATH
+        command = 'roc', -- make sure 'roc' is in your PATH
         args = { 'format', '-' }, -- read from stdin
+        to_stdin = true,
+      },
+    }
+    local odin_formatter = helpers.make_builtin {
+      name = 'odin',
+      method = null_ls.methods.FORMATTING,
+      filetypes = { 'odin' },
+      generator = helpers.formatter_factory {
+        command = 'odinfmt', -- make sure 'odinfmt' is in your PATH
+        args = { '-stdin' }, -- read from stdin
         to_stdin = true,
       },
     }
@@ -59,8 +69,9 @@ return {
         filetypes = { 'c', 'cpp', 'h', '.hpp', 'hxx' },
       },
       formatting.gofmt,
-      roc_formatter,
       gleam_formatter,
+      roc_formatter,
+      odin_formatter,
     }
 
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
