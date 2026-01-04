@@ -20,12 +20,27 @@ return {
     },
   },
   version = '*',
+
   config = function()
     local blink = require 'blink.cmp'
+    local cmpEnabled = true
+
+    local function cmp_toggle()
+      cmpEnabled = not cmpEnabled
+      vim.diagnostic.enable(cmpEnabled)
+    end
+    vim.api.nvim_create_user_command('CmpToggle', function()
+      cmp_toggle()
+    end, {})
 
     blink.setup {
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = function()
+          if cmpEnabled then
+            return { 'lsp', 'path', 'snippets', 'buffer' }
+          end
+          return {}
+        end,
       },
       keymap = {
         preset = 'default',
